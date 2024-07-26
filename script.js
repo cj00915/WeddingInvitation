@@ -1,15 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const guestList = {
         "Principal Sponsors": [
-            "Principal Sponsor 1", "Principal Sponsor 2", "Principal Sponsor 3",
-            "Principal Sponsor 4", "Principal Sponsor 5", "Principal Sponsor 6",
-            "Principal Sponsor 7", "Principal Sponsor 8", "Principal Sponsor 9", "Principal Sponsor 10"
+            "Bryan & Daisy Manongsong",
+            "Mr & Mrs Basco",
+            "Mr & Mrs Castillo",
+            "Mr & Mrs Cafino",
+            "Mr & Mrs Belango"
         ],
-        "Best Man": ["Best Man"],
-        "Maid of Honor": ["Maid of Honor"],
+        "Best Man": ["Gelo Cafino"],
+        "Maid of Honor": ["Myta Villamor"],
         "Grooms Men": [
-            "Grooms Man 1", "Grooms Man 2", "Grooms Man 3", "Grooms Man 4", "Grooms Man 5",
-            "Grooms Man 6", "Grooms Man 7", "Grooms Man 8", "Grooms Man 9", "Grooms Man 10"
+            "John Michael Tungala",
+            "Christian Bucad",
+            "Tyrone De Asis",
+            "Con Serrano",
+            "Elias Tanate III",
+            "Joshua Chavez",
+            "Julius Paul Cabasa",
+            "Lorezo Dipad",
+            "Sheen Reyes",
+            "Ian Lavapie"
         ],
         "Brides Maid": [
             "Brides Maid 1", "Brides Maid 2", "Brides Maid 3", "Brides Maid 4", "Brides Maid 5",
@@ -104,3 +114,29 @@ document.addEventListener('DOMContentLoaded', () => {
         showGuestPage();
     }
 });
+
+fetch('/api/guests')
+    .then(response => response.json())
+    .then(data => {
+        // Use `data` to populate the guest list
+    });
+
+    fetch('/api/companions')
+    .then(response => response.json())
+    .then(data => {
+        // Use `data` to populate companion fields
+    });
+    fetch('/api/companions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            guest: 'Guest Name',
+            companions: ['Companion 1', 'Companion 2']
+        })
+    }).then(response => response.text())
+      .then(message => {
+          alert(message);
+      });
+    
